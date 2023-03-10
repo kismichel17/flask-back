@@ -5,8 +5,12 @@ from flask_restful import Api
 from flask_sqlalchemy import SQLAlchemy
 
 
+class Config:
+    CORS_ALLOWED_ORIGINS = ['http://localhost:4200']
+
+
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origins": "*"}})
+cors = CORS(app, resources={r"/*": {"origins": Config.CORS_ALLOWED_ORIGINS}})
 
 api = Api(app)
 
